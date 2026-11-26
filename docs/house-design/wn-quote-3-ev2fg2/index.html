@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>ใบเสนอราคา WN ครั้งที่ 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a bill-of-quantities review sheet. One reading column, figures set flush right,
+   item codes boxed like the DT callouts on WN's own drawings. */
+:root {
+  --bg: #f2f3f1;          /* concrete */
+  --surface: #ffffff;
+  --ink: #1b211f;
+  --muted: #5a6460;
+  --rule: #d6dad6;
+  --tint: #e8ebe7;
+  --accent: #b0601f;      /* teak: premium over standard */
+  --accent-soft: #f3e4d6;
+  --base: #2370cd;        /* area-based price */
+  --warn: #9a3412;
+  --font-display: "Anuphan", "IBM Plex Sans Thai", "Leelawadee UI", "Tahoma", sans-serif;
+  --font-body: "IBM Plex Sans Thai", "Leelawadee UI", "Tahoma", sans-serif;
+  --font-code: "IBM Plex Mono", "Consolas", monospace;
+  --col: 74rem;
+  --read: 44rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141918; --surface: #1b2120; --ink: #e6eae7; --muted: #a0aaa5; --rule: #2e3634;
+    --tint: #232a29; --accent: #c97a3a; --accent-soft: #3a2a1d; --base: #519ced; --warn: #f0a27a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141918; --surface: #1b2120; --ink: #e6eae7; --muted: #a0aaa5; --rule: #2e3634;
+  --tint: #232a29; --accent: #c97a3a; --accent-soft: #3a2a1d; --base: #519ced; --warn: #f0a27a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 1rem; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 4rem;
+}
+.wrap { max-width: var(--col); margin: 0 auto; display: grid; gap: 3.5rem; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.3; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); font-weight: 700; }
+h2 { font-size: clamp(1.4rem, 2.6vw, 1.85rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0; max-width: var(--read); }
+.num, td.num, th.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.muted { color: var(--muted); }
+.eyebrow { font-size: .8rem; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.code {
+  font-family: var(--font-code); font-size: .82em; letter-spacing: .02em;
+  border: 1.5px solid currentColor; padding: 0 .35em; border-radius: 2px; white-space: nowrap;
+}
+section { display: grid; gap: 1.25rem; min-width: 0; }
+.section-head { display: grid; gap: .35rem; border-top: 2px solid var(--ink); padding-top: 1rem; }
+
+/* header */
+header.top { display: grid; gap: 1.5rem; padding-top: 2.5rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; color: var(--muted); font-size: .92rem; }
+.hero { margin: 0; }
+.hero img { width: 100%; display: block; border-radius: 3px; }
+
+/* key figures */
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.fig { background: var(--surface); padding: 1.1rem 1.2rem; display: grid; gap: .2rem; align-content: start; }
+.fig .label { font-size: .88rem; color: var(--muted); }
+.fig .value { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.fig .note { font-size: .85rem; color: var(--muted); }
+.fig.hl .value { color: var(--accent); }
+
+.summary { display: grid; gap: .6rem; max-width: var(--read); padding: 0; margin: 0; list-style: none; counter-reset: s; }
+.summary li { padding-left: 1.4rem; position: relative; }
+.summary li::before { content: ""; position: absolute; left: 0; top: .72em; width: .55rem; height: .55rem; background: var(--accent); }
+
+/* tables */
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { text-align: left; font-weight: 600; font-size: .82rem; color: var(--muted); background: var(--tint); }
+tbody tr:hover { background: var(--tint); }
+tr.total td { font-weight: 600; border-top: 2px solid var(--ink); border-bottom: 0; }
+tr.hl td { background: var(--accent-soft); font-weight: 600; }
+td.bar { width: 32%; min-width: 9rem; vertical-align: middle; }
+.bar-track { height: 14px; position: relative; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 0 4px 4px 0; }
+
+/* composition bar */
+.compo { display: grid; gap: .6rem; }
+.compo-bar { display: flex; height: 2.4rem; gap: 2px; }
+.compo-bar > div { height: 100%; }
+.compo-bar .a { background: var(--base); border-radius: 4px 0 0 4px; }
+.compo-bar .b { background: var(--accent); border-radius: 0 4px 4px 0; }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; font-size: .9rem; }
+.legend span { display: inline-flex; align-items: center; gap: .45rem; }
+.sw { width: .8rem; height: .8rem; display: inline-block; border-radius: 2px; }
+
+/* callout */
+.callout { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent); padding: 1.1rem 1.3rem; display: grid; gap: .6rem; max-width: 52rem; }
+.callout h3 { font-size: 1.1rem; }
+
+/* item feature */
+.item { display: grid; gap: 1.1rem; background: var(--surface); border: 1px solid var(--rule); padding: 1.4rem; }
+.item-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 1.5rem; }
+.item-head .price { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.item-head .price small { font-size: .85rem; color: var(--muted); font-weight: 500; }
+.item-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 1.4rem; align-items: start; }
+.item-body.single { grid-template-columns: minmax(0, 1fr); }
+.facts { display: grid; gap: .6rem; min-width: 0; }
+.facts dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; margin: 0; font-size: .93rem; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.facts ul { margin: 0; padding-left: 1.2rem; font-size: .93rem; display: grid; gap: .2rem; }
+.why { font-size: .93rem; background: var(--tint); padding: .7rem .9rem; }
+.why b { font-weight: 600; }
+.gallery { display: grid; gap: .8rem; min-width: 0; }
+.gallery.two { grid-template-columns: 1fr 1fr; }
+figure { margin: 0; display: grid; gap: .35rem; min-width: 0; }
+figure button { padding: 0; border: 1px solid var(--rule); background: var(--surface); cursor: zoom-in; display: block; width: 100%; }
+figure button:focus-visible { outline: 3px solid var(--base); outline-offset: 2px; }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+.keyplan { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.4rem; align-items: start; }
+.keylist { display: grid; gap: .8rem; font-size: .93rem; }
+.keylist div { display: grid; grid-template-columns: auto 1fr; gap: .7rem; align-items: baseline; }
+.k-or { color: #c2410c; } .k-bl { color: #1d4ed8; } .k-gr { color: #15803d; }
+
+.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.2rem; }
+.cardlist { display: grid; gap: 1rem; padding: 0; margin: 0; list-style: none; counter-reset: q; }
+.cardlist li { background: var(--surface); border: 1px solid var(--rule); padding: 1rem 1.2rem 1rem 3.2rem; position: relative; max-width: 52rem; }
+.cardlist li::before { counter-increment: q; content: counter(q); position: absolute; left: 1.1rem; top: 1rem; font-family: var(--font-display); font-weight: 700; color: var(--accent); }
+.cardlist b { font-weight: 600; }
+.excl { columns: 2 16rem; column-gap: 2rem; padding-left: 1.2rem; margin: 0; }
+.excl li { break-inside: avoid; margin-bottom: .3rem; }
+footer { font-size: .85rem; color: var(--muted); display: grid; gap: .4rem; border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+
+dialog { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+dialog::backdrop { background: rgba(10, 12, 12, .82); }
+dialog img { max-width: 96vw; max-height: 88vh; display: block; }
+dialog .close { position: absolute; top: .5rem; right: .5rem; font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); padding: .2rem .8rem; cursor: pointer; }
+dialog p { color: #e6eae7; font-size: .85rem; padding: .4rem 0; max-width: none; }
+
+@media (max-width: 760px) {
+  .item-body, .keyplan { grid-template-columns: minmax(0, 1fr); }
+  .item { padding: 1rem; }
+  td.bar { min-width: 6rem; }
+}
+@media (max-width: 480px) { .gallery.two { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="top">
+  <div style="display:grid;gap:.6rem">
+    <div class="eyebrow">สรุปและวิเคราะห์ใบเสนอราคา · บริษัท วรชานนท์ ก่อสร้าง จำกัด (WN-house)</div>
+    <h1>ใบเสนอราคาครั้งที่ 3 บ้านคุณรินระวี: ค่าใช้จ่ายมาจากไหน</h1>
+    <div class="meta">
+      <span>แบบ Design 3.3</span>
+      <span>ใบเสนอราคาลงวันที่ 26 พฤศจิกายน 2569</span>
+      <span>บ้านพักอาศัย ค.ส.ล. 2 ชั้น · ต.ท่าวังตาล อ.สารภี จ.เชียงใหม่</span>
+    </div>
+  </div>
+  <figure class="hero">
+    <button type="button" data-zoom><img src="img/r-front.jpg" alt="ภาพ 3 มิติด้านหน้าบ้าน แบบ Design 3.3" width="1653" height="1101"></button>
+    <figcaption>ภาพ 3 มิติด้านหน้าบ้าน จากเอกสารเสนองานออกแบบ 3.3 ของบริษัท WN-house (6 พ.ย. 2569) แตะภาพเพื่อขยาย</figcaption>
+  </figure>
+</header>
+
+<section aria-label="ตัวเลขหลัก">
+  <div class="figures">
+    <div class="fig"><span class="label">ราคารวมทั้งสิ้น</span><span class="value">10,617,856</span><span class="note">บาท (ยังไม่รวมสระว่ายน้ำและแอร์)</span></div>
+    <div class="fig"><span class="label">ค่าก่อสร้างคิดตามพื้นที่ (รายการ 1–4)</span><span class="value">7,644,375</span><span class="note">บาท · 72% ของราคารวม</span></div>
+    <div class="fig hl"><span class="label">รายการ 5 งานตกแต่งพิเศษ</span><span class="value">2,973,481</span><span class="note">บาท · 28% ของราคารวม</span></div>
+    <div class="fig"><span class="label">เฉลี่ยต่อพื้นที่ภายใน 389.25 ตร.ม.</span><span class="value">≈ 27,300</span><span class="note">บาท/ตร.ม. (ราคารวมหารพื้นที่ภายใน)</span></div>
+  </div>
+  <ul class="summary">
+    <li>ราคาหลักคิดตามพื้นที่ใช้สอย พื้นที่ภายในคิดตารางเมตรละ 15,000 บาท ราคานี้รวมวัสดุ “มาตรฐานบริษัท” ไว้แล้ว เช่น ประตู หน้าต่าง และผิวผนังพื้นฐาน</li>
+    <li><b>รายการ 5 ไม่ได้มีแค่งานตกแต่ง</b> แต่เป็นยอดรวม “ส่วนต่าง” ของทุกอย่างที่ดีกว่ามาตรฐานบริษัท (ราคาจริง 3,398,438 บาท หักค่ามาตรฐาน 424,957 บาท)</li>
+    <li>ส่วนต่างก้อนใหญ่ที่สุดคืองานตกแต่งภายนอกรหัส DT (1.39 ล้านบาท) รองลงมาคือผนังก่ออิฐสองชั้น (0.52 ล้าน) ประตู (0.52 ล้าน) และหน้าต่าง (0.30 ล้าน)</li>
+    <li>ใน DT รายการที่แพงที่สุดคือหลังคากระจกทางเข้า <span class="code">DT.17</span> 220,000 บาท และหลังคา Shinkolite ริมสระ <span class="code">DT.11</span> 177,225 บาท</li>
+    <li>ราคานี้ยังไม่รวมสระว่ายน้ำ เครื่องปรับอากาศ ดวงโคม เฟอร์นิเจอร์ และเคาน์เตอร์ครัว ราคาสุดท้ายจึงจะสูงกว่านี้อีกมาก</li>
+  </ul>
+</section>
+
+<section id="structure">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 1</span>
+    <h2>โครงสร้างราคา</h2>
+  </div>
+  <div class="compo" role="img" aria-label="สัดส่วนราคารวม: ค่าก่อสร้างตามพื้นที่ 72 เปอร์เซ็นต์ รายการ 5 งานตกแต่งพิเศษ 28 เปอร์เซ็นต์">
+    <div class="compo-bar">
+      <div class="a" style="width:72%" title="ค่าก่อสร้างตามพื้นที่ 7,644,375 บาท (72%)"></div>
+      <div class="b" style="width:28%" title="รายการ 5 งานตกแต่งพิเศษ 2,973,481 บาท (28%)"></div>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--base)"></i>ค่าก่อสร้างตามพื้นที่ 7,644,375 บาท (72%)</span>
+      <span><i class="sw" style="background:var(--accent)"></i>รายการ 5 งานตกแต่งพิเศษ 2,973,481 บาท (28%)</span>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ลำดับ</th><th>รายการ</th><th class="num">ปริมาณ</th><th class="num">ราคา/หน่วย</th><th class="num">ราคารวม (บาท)</th></tr></thead>
+      <tbody>
+        <tr><td>1.1</td><td>พื้นที่ภายใน ชั้น 1</td><td class="num">155.40 ตร.ม.</td><td class="num">15,000</td><td class="num">2,331,000</td></tr>
+        <tr><td>1.2</td><td>พื้นที่ภายใน ชั้น 2</td><td class="num">221.10 ตร.ม.</td><td class="num">15,000</td><td class="num">3,316,500</td></tr>
+        <tr><td>1.3</td><td>พื้นที่ Double space (โถงสูงสองชั้น)</td><td class="num">12.75 ตร.ม.</td><td class="num">13,500</td><td class="num">172,125</td></tr>
+        <tr><td>2.1</td><td>พื้นที่ภายนอกชั้น 1 ใต้พื้นชั้น 2 (โรงจอดรถ ทางเดินมีหลังคา)</td><td class="num">93.85 ตร.ม.</td><td class="num">8,000</td><td class="num">750,800</td></tr>
+        <tr><td>2.2</td><td>พื้นที่ภายนอกชั้น 1 มีหลังคา</td><td class="num">25.40 ตร.ม.</td><td class="num">13,000</td><td class="num">330,200</td></tr>
+        <tr><td>2.3</td><td>พื้นที่ภายนอกชั้น 1 โครงสร้าง ค.ส.ล. ไม่มีหลังคา (ลานรอบสระ)</td><td class="num">60.65 ตร.ม.</td><td class="num">7,000</td><td class="num">424,550</td></tr>
+        <tr><td>3</td><td>หลังคาคอนกรีตกันซึม 4 ชั้น (ซีเมนต์ 2 + PU 2)</td><td class="num">51.40 ตร.ม.</td><td class="num">3,500</td><td class="num">179,900</td></tr>
+        <tr><td>4</td><td>รางน้ำหลังคา ค.ส.ล. กว้าง 0.60 ม.</td><td class="num">39.80 ม.</td><td class="num">3,500</td><td class="num">139,300</td></tr>
+        <tr class="hl"><td>5</td><td>งานตกแต่งพิเศษ (รายละเอียดในส่วนที่ 2)</td><td class="num">1 ชุด</td><td class="num"></td><td class="num">2,973,481</td></tr>
+        <tr><td>6</td><td>งานสระว่ายน้ำ <span class="muted">(อยู่ระหว่างสรุปรายละเอียดและราคา)</span></td><td class="num"></td><td class="num"></td><td class="num muted">ยังไม่คิด</td></tr>
+        <tr class="total"><td></td><td>รวมทั้งสิ้น</td><td></td><td></td><td class="num">10,617,856</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="font-size:.88rem">ที่มา: ใบเสนอราคา หน้า 1 · ตรวจผลรวมทุกบรรทัดแล้ว ตัวเลขตรงกัน</p>
+</section>
+
+<section id="item5">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 2</span>
+    <h2>รายการ 5 “งานตกแต่งพิเศษ” คืออะไร</h2>
+  </div>
+  <div class="callout">
+    <h3>เป็นยอดรวมของการอัปเกรดทั้งหมด ไม่ได้มีแค่งานตกแต่ง</h3>
+    <p>ราคาตารางเมตรละ 15,000 บาทรวมวัสดุพื้นฐานของบริษัทไว้แล้ว เช่น ประตูภายนอกชุดละ 8,300 บาท ประตูภายในชุดละ 6,500 บาท หน้าต่างชุดละ 4,500–9,000 บาท และผิวผนังตารางเมตรละ 150 บาท เอกสารแนบ 6 หน้า (“รายละเอียดงานเพิ่มลดและงานตกแต่ง”) แสดงแต่ละรายการสองราคา คือ <b>ราคาตามมาตรฐานบริษัท</b> กับ <b>ราคาตามจริง</b> ของวัสดุที่เลือกในแบบ รายการ 5 คือผลต่างของสองราคานี้</p>
+    <p>สรุปง่ายๆ ราคาจริงของงานในกลุ่มนี้คือ 3,398,438 บาท บริษัทหักค่าวัสดุมาตรฐานที่คิดไว้ในราคาต่อตารางเมตรแล้ว 424,957 บาท เหลือส่วนที่ต้องจ่ายเพิ่ม <b>2,973,481 บาท</b></p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>หมวด</th><th class="num">ราคามาตรฐาน</th><th class="num">ราคาตามจริง</th><th class="num">ส่วนต่าง (จ่ายเพิ่ม)</th><th>สัดส่วนส่วนต่าง</th></tr></thead>
+      <tbody>
+        <tr title="งานตกแต่ง DT: มาตรฐาน 78,957 · ตามจริง 1,472,048 · ส่วนต่าง 1,393,091 บาท"><td>4. งานตกแต่ง (DT.1–DT.25)</td><td class="num">78,957</td><td class="num">1,472,048</td><td class="num"><b>1,393,091</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></td></tr>
+        <tr title="ผนัง: มาตรฐาน 0 · ตามจริง 520,090 บาท"><td>1. งานผนัง (ผนังก่ออิฐสองชั้น ผนังบังหลังคา)</td><td class="num">0</td><td class="num">520,090</td><td class="num"><b>520,090</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:37.3%"></div></div></td></tr>
+        <tr title="ประตู: มาตรฐาน 195,000 · ตามจริง 712,400 · ส่วนต่าง 517,400 บาท"><td>2. งานประตู (D1–D13)</td><td class="num">195,000</td><td class="num">712,400</td><td class="num"><b>517,400</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:37.1%"></div></div></td></tr>
+        <tr title="หน้าต่าง: มาตรฐาน 133,500 · ตามจริง 437,500 · ส่วนต่าง 304,000 บาท"><td>3. หน้าต่างอลูมิเนียมสีดำ (W1–W18)</td><td class="num">133,500</td><td class="num">437,500</td><td class="num"><b>304,000</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:21.8%"></div></div></td></tr>
+        <tr title="ไฟฟ้า: มาตรฐาน 0 · ตามจริง 144,300 บาท"><td>7. งานไฟฟ้าเพิ่มเติม</td><td class="num">0</td><td class="num">144,300</td><td class="num"><b>144,300</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:10.4%"></div></div></td></tr>
+        <tr title="น้ำร้อน: มาตรฐาน 17,500 · ตามจริง 74,600 · ส่วนต่าง 57,100 บาท"><td>5. ท่อน้ำร้อนและวงจรเครื่องทำน้ำร้อน</td><td class="num">17,500</td><td class="num">74,600</td><td class="num"><b>57,100</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:4.1%"></div></div></td></tr>
+        <tr title="ปั๊มและถังน้ำ: มาตรฐาน 0 · ตามจริง 37,500 บาท"><td>6. ปั๊มน้ำ Hitachi 600W และถัง DOS 2,000 ลิตร</td><td class="num">0</td><td class="num">37,500</td><td class="num"><b>37,500</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:2.7%"></div></div></td></tr>
+        <tr class="total"><td>รวม</td><td class="num">424,957</td><td class="num">3,398,438</td><td class="num">2,973,481</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="font-size:.88rem">ที่มา: รายละเอียดงานเพิ่มลดและงานตกแต่ง หน้า 1–6 (หน้า 3–8 ของไฟล์) · เรียงตามส่วนต่างจากมากไปน้อย ตัวเลขหน้าหมวดเป็นเลขหมวดในเอกสารต้นฉบับ</p>
+</section>
+
+<section id="dt">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 3</span>
+    <h2>งานตกแต่ง DT: 1.39 ล้านบาท ใช้ไปกับอะไร</h2>
+  </div>
+  <p>ในแบบ งานตกแต่งมีรหัส DT.1 ถึง DT.25 และแต่ละรหัสมีภาพ 3 มิติแนบ (หน้า 31–36 และ 40) เมื่อจัดกลุ่มตามประเภทงาน จะเห็นว่าหลังคากระจกและหลังคาโปร่งแสงสามจุดใช้เงินมากที่สุด</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>กลุ่มงาน</th><th>รหัส</th><th class="num">ราคาตามจริง</th><th class="num">ส่วนต่าง</th><th>สัดส่วนส่วนต่าง</th></tr></thead>
+      <tbody>
+        <tr><td>หลังคากระจกและหลังคาโปร่งแสง</td><td>DT.11, 14, 17</td><td class="num">483,225</td><td class="num"><b>465,225</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></td></tr>
+        <tr><td>ระแนงอลูมิเนียมลายไม้ ผนังไม้เทียม ไม้ตกแต่ง</td><td>DT.9.2, 12, 13, 15, 16, 18–21</td><td class="num">371,715</td><td class="num"><b>371,715</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:79.9%"></div></div></td></tr>
+        <tr><td>ผนังโครงสร้างและกระเบื้องลายหิน Travertine</td><td>DT.2, 4, 7</td><td class="num">244,508</td><td class="num"><b>235,976</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:50.7%"></div></div></td></tr>
+        <tr><td>บันไดไม้ปิดผิวไวท์โอ๊ค ราวกระจก</td><td>DT.25</td><td class="num">184,500</td><td class="num"><b>148,500</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:31.9%"></div></div></td></tr>
+        <tr><td>ผนังสีเท็กซ์เจอร์ดำ และท็อปหิน</td><td>DT.6, 8, 9.1</td><td class="num">140,400</td><td class="num"><b>123,975</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:26.6%"></div></div></td></tr>
+        <tr><td>กระถางต้นไม้ก่ออิฐและ ค.ส.ล.</td><td>DT.1, 3, 5, 10</td><td class="num">47,700</td><td class="num"><b>47,700</b></td><td class="bar"><div class="bar-track"><div class="bar-fill" style="width:10.3%"></div></div></td></tr>
+        <tr class="total"><td>รวม</td><td></td><td class="num">1,472,048</td><td class="num">1,393,091</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="keyplan">
+    <figure>
+      <button type="button" data-zoom><img src="img/keyplan-f1.jpg" alt="ผังชั้น 1 แสดงตำแหน่ง DT.11 DT.17 และ DT.25" width="2042" height="1573"></button>
+      <figcaption>ผังชั้น 1 (ใบเสนอราคา หน้า 11) กรอบสีเพิ่มโดยผู้จัดทำรายงาน ตำแหน่งกรอบเป็นค่าประมาณที่อ่านจากผังพื้นที่ชั้น 2 (หน้า 19)</figcaption>
+    </figure>
+    <div class="keylist">
+      <h3>ตำแหน่งในผัง</h3>
+      <div><span class="code k-or">DT.11</span><span>หลังคา Shinkolite ยาว 20.85 ม. ยื่นจากขอบพื้นชั้น 2 ด้านสระว่ายน้ำ คลุมระเบียง (12) ตลอดแนวบ้าน</span></div>
+      <div><span class="code k-bl">DT.17</span><span>หลังคากระจกบนโครงเหล็ก คลุมบันไดทางเข้าหน้าบ้านหน้าโถง (02) ด้านถนน</span></div>
+      <div><span class="code k-gr">DT.25</span><span>บันไดหลักกลางบ้าน ข้างลิฟต์ ปิดผิวไม้ไวท์โอ๊คทั้งชุด</span></div>
+      <p class="muted" style="font-size:.88rem">ผังชั้น 1 หันทิศเหนือขึ้นด้านบนโดยประมาณ ถนนอยู่ด้านล่างของภาพ และสระว่ายน้ำอยู่ด้านบน</p>
+    </div>
+  </div>
+
+  <!-- DT.17 -->
+  <article class="item" id="dt17">
+    <div class="item-head">
+      <h3><span class="code">DT.17</span> หลังคากระจกทางเข้า</h3>
+      <span class="price">220,000 <small>บาท · มาตรฐานหัก 0</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <dl>
+          <dt>ขนาด</dt><dd>5.15 × 3.60 ม. (ราว 18.5 ตร.ม.)</dd>
+          <dt>วัสดุ</dt><dd>กระจกเทมเปอร์ลามิเนต 6+6 มม. (หนารวม 12 มม.)</dd>
+          <dt>โครงสร้าง</dt><dd>กรอบเหล็ก I-BEAM 250×125 มม. สามด้าน (หนัก 229.8 กก. ต่อท่อน 6 ม.) โครงเคร่าเหล็กกล่อง 200×100 มม. แปเหล็กกล่อง 50×50 มม.</dd>
+          <dt>ราคาเฉลี่ย</dt><dd>ตารางเมตรละราว 11,900 บาท</dd>
+        </dl>
+        <p class="why"><b>ทำไมแพง</b> หลังคานี้ยื่นออกจากตัวบ้านและพาดไปถึงผนังตกแต่ง DT.2 จึงใช้เหล็กรูปพรรณขนาดใหญ่ (I-BEAM) ซึ่งหนักและต้องยก และกระจกลามิเนตก็เป็นกระจกราคาสูง ราคา 220,000 บาทเป็นราคาเหมารวม ยังไม่ได้แยกค่าเหล็ก ค่ากระจก และค่าแรง</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <button type="button" data-zoom><img src="img/r-entry.jpg" alt="ภาพ 3 มิติทางเข้าบ้านใต้หลังคากระจก" width="1653" height="1101" loading="lazy"></button>
+          <figcaption>บรรยากาศทางเข้าใต้หลังคากระจก ผนังด้านขวาคือกระเบื้องลายหิน DT.2 (ภาพ 3 มิติ 6 พ.ย. 2569)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/dt17.jpg" alt="แบบรายละเอียด DT.17 หลังคากระจกพร้อมโครงเหล็ก" width="1150" height="706" loading="lazy"></button>
+          <figcaption>แบบรายละเอียด DT.17 (ใบเสนอราคา หน้า 35)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- DT.11 -->
+  <article class="item" id="dt11">
+    <div class="item-head">
+      <h3><span class="code">DT.11</span> หลังคา Shinkolite ริมสระ</h3>
+      <span class="price">177,225 <small>บาท · มาตรฐานหัก 0</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <dl>
+          <dt>ขนาด</dt><dd>ยาว 20.85 ม. ยื่น 1.40 ม. (ราว 29 ตร.ม.)</dd>
+          <dt>วัสดุ</dt><dd>แผ่นอะคริลิก Shinkolite รุ่น Heat Cut (กันความร้อน) สีน้ำตาลอ่อน</dd>
+          <dt>โครงสร้าง</dt><dd>เหล็กกล่อง 200×100×3.2 มม. และ 100×50×3.2 มม. พร้อมอุปกรณ์ติดตั้ง</dd>
+          <dt>ราคา</dt><dd>เมตรละ 8,500 บาท (ตารางเมตรละราว 6,100 บาท)</dd>
+        </dl>
+        <p class="why"><b>ทำไมแพง</b> กันสาดยาวตลอดแนวบ้านด้านสระ ใช้แผ่นอะคริลิกกันความร้อนแทนหลังคาธรรมดา และต้องทำโครงเหล็กยื่นลอยโดยไม่มีเสารับ ทำหน้าที่บังแดดและฝนให้ห้องนั่งเล่นกับห้องอาหารที่เปิดกระจกเต็มผนังออกสู่สระ</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <button type="button" data-zoom><img src="img/r-pool.jpg" alt="ภาพ 3 มิติด้านสระว่ายน้ำ เห็นกันสาดยาวเหนือระเบียง" width="1653" height="1101" loading="lazy"></button>
+          <figcaption>กันสาดโครงเหล็กสีดำยาวเหนือระเบียงริมสระคือ DT.11 (ภาพ 3 มิติ 6 พ.ย. 2569)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/dt11.jpg" alt="แบบรายละเอียด DT.11 หลังคา Shinkolite" width="1150" height="706" loading="lazy"></button>
+          <figcaption>แบบรายละเอียด DT.11 (ใบเสนอราคา หน้า 33)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- DT.25 -->
+  <article class="item" id="dt25">
+    <div class="item-head">
+      <h3><span class="code">DT.25</span> บันไดไม้ไวท์โอ๊คและราวกระจก</h3>
+      <span class="price">184,500 <small>บาท · หักมาตรฐาน 36,000 · ส่วนต่าง 148,500</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <ul>
+          <li>ลูกนอนไม้พาราประสานปิดผิวไวท์โอ๊ค หนา 3 ซม. 19 ขั้น ขั้นละ 3,500 บาท = 66,500 บาท</li>
+          <li>ลูกตั้งปิดผิวไวท์โอ๊ค หนา 2 ซม. 22 ขั้น ขั้นละ 2,500 บาท = 55,000 บาท (ไม่มีการหักค่ามาตรฐาน)</li>
+          <li>ราวกันตกกระจกเทมเปอร์ 10 มม. 6 ม. เมตรละ 6,500 บาท = 39,000 บาท</li>
+          <li>ชานพักบันได 2 ชุด ชุดละ 12,000 บาท = 24,000 บาท</li>
+        </ul>
+        <p class="why"><b>ข้อสังเกต</b> ลูกนอนและชานพักมีการหักค่ามาตรฐาน แต่ลูกตั้งไม่มี ควรถามว่าบันไดมาตรฐานของบริษัทใช้ผิวอะไร</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <button type="button" data-zoom><img src="img/r-stair.jpg" alt="ภาพ 3 มิติบันไดไม้ในโถงสูง" width="1653" height="1101" loading="lazy"></button>
+          <figcaption>บันไดไม้ในโถงสูงสองชั้น (ภาพ 3 มิติ 6 พ.ย. 2569)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/dt25.jpg" alt="แบบรายละเอียด DT.25 บันได" width="1108" height="706" loading="lazy"></button>
+          <figcaption>แบบรายละเอียด DT.25 (ใบเสนอราคา หน้า 40)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- battens -->
+  <article class="item" id="battens">
+    <div class="item-head">
+      <h3>ระแนงอลูมิเนียมลายไม้และผนังไม้เทียม</h3>
+      <span class="price">371,715 <small>บาท · มาตรฐานหัก 0</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <ul>
+          <li><span class="code">DT.20</span> ระแนงอลูมิเนียมกล่องลายไม้ 100×45×3000 มม. 59 ท่อน ท่อนละ 1,500 = 88,500 บาท</li>
+          <li><span class="code">DT.12</span> ระแนงอลูมิเนียมลายไม้ 100×20×3000 มม. 81 ท่อน ท่อนละ 1,000 = 81,000 บาท</li>
+          <li><span class="code">DT.18</span> ระแนงอลูมิเนียมกล่องลายไม้ 100×45×2950 มม. 29 ท่อน = 43,500 บาท</li>
+          <li><span class="code">DT.9.2</span> ระแนงอลูมิเนียม 50×25 มม. พร้อมเหล็กปิดบน = 24,000 บาท</li>
+          <li><span class="code">DT.21</span> ระแนงอลูมิเนียมกล่องสีดำ 50×20 มม. 30 ท่อน = 18,000 บาท</li>
+          <li><span class="code">DT.13</span> <span class="code">DT.19</span> ผนังไม้เทียม Infinite รุ่น PWCO 17-X รวม 101 แผ่น แผ่นละ 900 = 90,900 บาท และโครงเคร่าเหล็ก 42.9 ตร.ม. = 21,450 บาท</li>
+          <li><span class="code">DT.15</span> <span class="code">DT.16</span> ไม้ CONWOOD และไม้ตกแต่ง SCG = 4,365 บาท</li>
+        </ul>
+        <p class="why"><b>หน้าที่</b> ระแนงและแผงไม้เทียมเป็นส่วนที่ทำให้บ้านมีแถบไม้สีน้ำตาลบนชั้น 2 ทั้งด้านหน้าและด้านสระ ราคาคิดเป็นท่อนหรือแผ่น จึงลดได้ตรงๆ ตามจำนวนที่ตัดออก</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <button type="button" data-zoom><img src="img/r-facade.jpg" alt="ภาพ 3 มิติหน้าบ้าน เห็นแถบระแนงไม้ชั้นสอง" width="1653" height="1101" loading="lazy"></button>
+          <figcaption>แถบระแนงลายไม้บนผนังชั้น 2 ด้านหน้า (ภาพ 3 มิติ 6 พ.ย. 2569)</figcaption>
+        </figure>
+        <div class="gallery two">
+          <figure>
+            <button type="button" data-zoom><img src="img/dt20.jpg" alt="แบบรายละเอียด DT.20 ระแนงอลูมิเนียม" width="1150" height="706" loading="lazy"></button>
+            <figcaption>DT.20 (หน้า 36)</figcaption>
+          </figure>
+          <figure>
+            <button type="button" data-zoom><img src="img/dt13.jpg" alt="แบบรายละเอียด DT.13 ผนังไม้เทียม" width="1147" height="706" loading="lazy"></button>
+            <figcaption>DT.13 ผนังไม้เทียม (หน้า 34)</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- travertine -->
+  <article class="item" id="travertine">
+    <div class="item-head">
+      <h3><span class="code">DT.2</span> <span class="code">DT.4</span> <span class="code">DT.7</span> ผนังกระเบื้องลายหิน Travertine</h3>
+      <span class="price">244,508 <small>บาท · หักมาตรฐาน 8,532</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <ul>
+          <li><span class="code">DT.2</span> ผนังตกแต่งหน้าบ้าน ทำโครงสร้างคานและก่ออิฐ หนา 0.50 ม. สูง 3.70 ม. ยาว 6.10 ม. = 67,100 บาท กรุกระเบื้อง 54 ตร.ม. = 86,400 บาท</li>
+          <li><span class="code">DT.4</span> กรุกระเบื้องผนังกระถางและเสา 39.60 ตร.ม. = 63,360 บาท</li>
+          <li><span class="code">DT.7</span> กรุกระเบื้องผนังภายใน 17.28 ตร.ม. = 27,648 บาท</li>
+        </ul>
+        <p class="why"><b>ราคากระเบื้อง</b> คิดตารางเมตรละ 1,600 บาทรวมติดตั้ง โดยตั้งงบค่ากระเบื้องไว้ตารางเมตรละ 1,000 บาท (TRAVERTINE VEIN 60×120 ซม. ผิวด้าน) ถ้าเลือกกระเบื้องที่แพงกว่างบ ราคาจะเพิ่มขึ้น</p>
+      </div>
+      <div class="gallery two">
+        <figure>
+          <button type="button" data-zoom><img src="img/dt02.jpg" alt="แบบรายละเอียด DT.2 ผนังตกแต่งหน้าบ้าน" width="1147" height="700" loading="lazy"></button>
+          <figcaption>DT.2 ผนังหน้าบ้าน (หน้า 31)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/dt04.jpg" alt="แบบรายละเอียด DT.4 ผนังกระเบื้อง" width="1147" height="703" loading="lazy"></button>
+          <figcaption>DT.4 (หน้า 31)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- texture -->
+  <article class="item" id="texture">
+    <div class="item-head">
+      <h3><span class="code">DT.6</span> <span class="code">DT.8</span> <span class="code">DT.9</span> ผนังสีเท็กซ์เจอร์ดำ SKK</h3>
+      <span class="price">140,400 <small>บาท · หักมาตรฐาน 16,425</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <ul>
+          <li>สี Texture Sipokaken #500 (ทรายพ่นเม็ดใหญ่) ทำลายเส้นแนวตั้ง สีดำ รวม 109.5 ตร.ม. ตารางเมตรละ 1,200 บาท (งบประมาณ) = 131,400 บาท</li>
+          <li><span class="code">DT.8.1</span> ท็อปหินคริสตัลไวท์ 0.45×1.25 ม. = 9,000 บาท</li>
+          <li><span class="code">DT.9</span> เป็นกล่องอาคารเล็กสีดำ 2.70×2.70 ม. ข้างสระ ควรยืนยันกับบริษัทว่าใช้งานเป็นอะไร</li>
+        </ul>
+      </div>
+      <div class="gallery two">
+        <figure>
+          <button type="button" data-zoom><img src="img/dt06.jpg" alt="แบบรายละเอียด DT.6 ผนังเท็กซ์เจอร์" width="1150" height="700" loading="lazy"></button>
+          <figcaption>DT.6 (หน้า 32)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/dt09.jpg" alt="แบบรายละเอียด DT.9 กล่องอาคารสีดำ" width="1150" height="703" loading="lazy"></button>
+          <figcaption>DT.9 (หน้า 33)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- DT.14 -->
+  <article class="item" id="dt14">
+    <div class="item-head">
+      <h3><span class="code">DT.14</span> หลังคากระจกขนาดเล็ก</h3>
+      <span class="price">86,000 <small>บาท · หักมาตรฐาน 18,000 · ส่วนต่าง 68,000</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <dl>
+          <dt>ขนาด</dt><dd>3.80 × 1.90 ม. (ราว 7.2 ตร.ม.)</dd>
+          <dt>วัสดุ</dt><dd>กระจกเทมเปอร์ลามิเนต 6+6 มม. กรอบเหล็กกล่อง 150×50 มม.</dd>
+          <dt>ราคาเฉลี่ย</dt><dd>ตารางเมตรละราว 11,900 บาท ใกล้เคียงกับ DT.17</dd>
+        </dl>
+        <p class="why"><b>ข้อสังเกต</b> แบบไม่ได้ระบุตำแหน่งชัดเจน ภาพแสดงหลังคากระจกบนพื้นที่ล้อมผนัง ซึ่งอาจเป็นช่องแสงเหนือห้องน้ำแบบมีสวน ควรสอบถามบริษัท</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <button type="button" data-zoom><img src="img/dt14.jpg" alt="แบบรายละเอียด DT.14 หลังคากระจก" width="1147" height="706" loading="lazy"></button>
+          <figcaption>แบบรายละเอียด DT.14 (ใบเสนอราคา หน้า 34)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section id="others">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 4</span>
+    <h2>ผนัง ประตู หน้าต่าง และงานระบบ</h2>
+  </div>
+
+  <article class="item">
+    <div class="item-head">
+      <h3>งานผนัง</h3>
+      <span class="price">520,090 <small>บาท · มาตรฐานหัก 0</small></span>
+    </div>
+    <div class="item-body single">
+      <div class="facts">
+        <ul>
+          <li><b>ผนังก่ออิฐสองชั้น (ผนังเบิ้ล) ปิดเหลื่อมเสา</b> 454.40 ตร.ม. ตารางเมตรละ 600 บาท = 272,640 บาท ช่วยกันร้อน กันเสียง และทำให้ผนังเรียบไม่เห็นเสา</li>
+          <li><b>คานและผนังก่ออิฐบังหลังคา</b> พร้อมเมมเบรนกันซึม 70.70 ม. เมตรละ 3,500 บาท = 247,450 บาท ช่วยซ่อนหลังคาให้บ้านดูเป็นกล่องหลังคาแบนตามภาพ 3 มิติ</li>
+        </ul>
+        <p class="why"><b>ข้อสังเกต</b> แบบคำนวณผนัง (หน้า 29–30) ระบุผนังเบิ้ลตารางเมตรละ 500 บาท แต่ใบเสนอราคาคิด 600 บาท ต่างกัน 45,440 บาท</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="item-head">
+      <h3>งานประตู 13 แบบ</h3>
+      <span class="price">712,400 <small>บาท · หักมาตรฐาน 195,000 · ส่วนต่าง 517,400</small></span>
+    </div>
+    <div class="item-body">
+      <div class="facts">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ประตู</th><th class="num">จำนวน</th><th class="num">ชุดละ</th><th class="num">ส่วนต่าง</th></tr></thead>
+            <tbody>
+              <tr><td>D6 บานลามิเนต วงกบไม้สัก สูง 3.05 ม.</td><td class="num">5</td><td class="num">31,500</td><td class="num">125,000</td></tr>
+              <tr><td>D7 บานลามิเนต วงกบไม้สัก (ห้องน้ำ)</td><td class="num">3</td><td class="num">31,500</td><td class="num">75,000</td></tr>
+              <tr><td>D11 บานเลื่อนลามิเนต 1.10×2.10 ม.</td><td class="num">4</td><td class="num">19,700</td><td class="num">52,800</td></tr>
+              <tr><td>D1 ประตูหน้าบานคู่ อลูมิเนียมลายไม้ 1.60×3.05 ม.</td><td class="num">1</td><td class="num">60,000</td><td class="num">51,700</td></tr>
+              <tr><td>D9 บานเลื่อนซ้อนอลูมิเนียมสีดำ 5.50×3.00 ม.</td><td class="num">1</td><td class="num">82,000</td><td class="num">50,000</td></tr>
+              <tr><td>D13 บานเลื่อนลามิเนต 1.20×3.00 ม.</td><td class="num">2</td><td class="num">26,700</td><td class="num">40,400</td></tr>
+              <tr><td>D8 บานเลื่อนสลับอลูมิเนียม 3.50×3.00 ม.</td><td class="num">1</td><td class="num">52,000</td><td class="num">36,000</td></tr>
+              <tr><td>ประตูอื่นอีก 6 แบบ (D2–D5, D10, D12)</td><td class="num">6</td><td class="num"></td><td class="num">86,500</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="why"><b>ทำไมแพง</b> ประตูภายในส่วนใหญ่สูงเต็มฝ้า 3.05 ม. (บานเปิด 2.20 ม. และช่องแสงติดตายด้านบน 0.80 ม.) ใช้วงกบไม้สัก และตัวบานลามิเนตบานละ 19,000 บาท ขณะที่ประตูภายในมาตรฐานชุดละ 6,500 บาท ประตู D6 และ D7 รวม 8 บาน คิดเป็นส่วนต่าง 200,000 บาท</p>
+      </div>
+      <div class="gallery two">
+        <figure>
+          <button type="button" data-zoom><img src="img/door-d1.jpg" alt="แบบประตู D1 ประตูหน้าบานคู่" width="623" height="855" loading="lazy"></button>
+          <figcaption>D1 ประตูหน้าบ้าน (หน้า 24)</figcaption>
+        </figure>
+        <figure>
+          <button type="button" data-zoom><img src="img/door-d6.jpg" alt="แบบประตู D6 ประตูภายในสูงเต็มฝ้า" width="623" height="850" loading="lazy"></button>
+          <figcaption>D6 ประตูภายในสูง 3.05 ม. (หน้า 24)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <div class="two-col">
+    <article class="item">
+      <div class="item-head">
+        <h3>หน้าต่าง 18 แบบ</h3>
+        <span class="price">437,500 <small>บาท · ส่วนต่าง 304,000</small></span>
+      </div>
+      <div class="facts">
+        <p style="font-size:.93rem">อลูมิเนียมสีดำ ชุดพัฒนา บานใหญ่ใช้กระจกเทมเปอร์ 6 มม. มาตรฐานบริษัทชุดละ 4,500–9,000 บาท แต่บานใหญ่ในแบบราคาสูงกว่า 4–5 เท่า</p>
+        <ul>
+          <li>W12 บานกระทุ้งและบานติดตาย 6 ชุด = 84,000 บาท</li>
+          <li>W11 บานเลื่อนสลับ 3.20×3.20 ม. = 51,000 บาท</li>
+          <li>W16 บานเลื่อนสลับ 3 ชุด = 45,000 บาท</li>
+          <li>W4 บานเลื่อนและบานติดตาย 4.60×3.00 ม. = 42,000 บาท</li>
+          <li>W5, W9, W15 บานใหญ่ ชุดละ 37,000 บาท</li>
+        </ul>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-head">
+        <h3>งานระบบ</h3>
+        <span class="price">238,900 <small>บาท · หักมาตรฐาน 17,500 · ส่วนต่าง 221,400</small></span>
+      </div>
+      <div class="facts">
+        <ul>
+          <li><b>ไฟฟ้า 144,300 บาท</b>: ไฟฝังพื้นและไฟสวน 29 จุด 30,450 บาท · เมนไฟชาร์จรถ EV 18,000 · พัดลมดูดอากาศ 6 จุด 18,000 (ไม่รวมตัวเครื่อง) · เมนไฟปั๊มสระ 16,000 · ปลั๊กเพิ่ม 12 จุด 13,200 · LAN CAT6 4 จุด 11,200 · สวิตช์และจุดไฟอื่นๆ</li>
+          <li><b>น้ำร้อน 57,100 บาท</b>: ท่อ PPR 34.5 ม. และเมนไฟเครื่องทำน้ำร้อน 9,000 วัตต์ 5 จุด</li>
+          <li><b>ปั๊มและถังน้ำ 37,500 บาท</b>: ปั๊ม Hitachi TM-P600XX2 และถัง DOS 2,000 ลิตร</li>
+        </ul>
+        <p class="why">ดวงโคมทุกจุดเจ้าของจัดหาเอง ราคานี้เป็นค่าเดินสายและติดตั้งเท่านั้น</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 5</span>
+    <h2>ประเด็นที่ควรสอบถามบริษัท</h2>
+  </div>
+  <ol class="cardlist">
+    <li><b>อัตราผนังเบิ้ลไม่ตรงกัน</b> แบบหน้า 29–30 ระบุตารางเมตรละ 500 บาท ใบเสนอราคาคิด 600 บาท ส่วนต่าง 45,440 บาท</li>
+    <li><b>อัตราพื้นที่ภายนอกไม่มีหลังคาไม่ตรงกัน</b> แบบหน้า 18 ระบุตารางเมตรละ 8,000 บาท ใบเสนอราคาคิด 7,000 บาท (ถูกลง 60,650 บาท) ควรยืนยันว่าเป็นอัตราสุดท้าย</li>
+    <li><b>หลังคาคอนกรีตกันซึม 1.75 ตร.ม.</b> ในผังหลังคา (หน้า 20) ไม่ปรากฏในใบเสนอราคา (ประมาณ 6,125 บาท)</li>
+    <li><b>ตำแหน่งของ DT.14 และหน้าที่ของ DT.9</b> แบบยังไม่ระบุชัด</li>
+    <li><b>ขอรายการวัสดุมาตรฐานของบริษัท</b> หลายรายการไม่มีการหักค่ามาตรฐาน เช่น ลูกตั้งบันได ระแนง และจุดไฟฟ้า ควรรู้ว่าราคาตารางเมตรละ 15,000 บาทรวมอะไรบ้าง เพื่อให้แน่ใจว่าไม่จ่ายซ้ำ</li>
+    <li><b>เลขรายการข้าม</b> ในเอกสารไม่มีรายการ 4.22–4.24 และ 7.19 ควรยืนยันว่าไม่มีงานตกหล่น</li>
+    <li><b>งบวัสดุ</b> กระเบื้องตั้งงบตารางเมตรละ 1,000 บาท และสีเท็กซ์เจอร์ตารางเมตรละ 1,200 บาท ถ้าเลือกวัสดุจริงแพงกว่างบ ราคาจะเพิ่ม</li>
+    <li><b>ขอราคาแยกของ DT.17</b> (ค่าเหล็ก ค่ากระจก ค่าแรง) และให้วิศวกรโครงสร้างตรวจโครงหลังคายื่นทั้ง DT.11 และ DT.17</li>
+  </ol>
+</section>
+
+<section id="excluded">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 6</span>
+    <h2>สิ่งที่ยังไม่รวมในราคา 10.6 ล้านบาท</h2>
+  </div>
+  <ul class="excl">
+    <li>งานสระว่ายน้ำ (รายการ 6 รอสรุป)</li>
+    <li>เครื่องปรับอากาศชั้น 1 และชั้น 2 (เสนอราคาภายหลัง)</li>
+    <li>ดวงโคมไฟทั้งหมด (เจ้าของจัดหา)</li>
+    <li>ตัวพัดลมดูดอากาศ (เสนอภายหลัง)</li>
+    <li>เมนไฟฟ้าฝังดิน (เสนอภายหลังตามหน้างาน)</li>
+    <li>ถนนจากประตูรั้วถึงตัวบ้าน</li>
+    <li>ท่อระบายน้ำและท่อประปาส่วนที่ยาวเกิน 10 ม. จากตัวบ้าน</li>
+    <li>มุ้งลวดและเหล็กดัด</li>
+    <li>ปรับถมดิน ปลูกหญ้า เทพื้นรอบบ้าน</li>
+    <li>เฟอร์นิเจอร์ทั้งหมด</li>
+    <li>เคาน์เตอร์ห้องครัว</li>
+    <li>ค่าธรรมเนียมมิเตอร์ประปาและไฟฟ้า</li>
+    <li>เครื่องทำน้ำอุ่น เครื่องทำน้ำร้อน อ่างอาบน้ำ</li>
+    <li>งานตกแต่งไฟฟ้าและฝ้าเพดานเพิ่มเติม</li>
+  </ul>
+  <p class="muted" style="font-size:.9rem">ของแถม: ระบบเติมอากาศ O2 และกรอง PM2.5 ยี่ห้อ Freshnergy ครอบคลุม 100 ตร.ม. มูลค่า 41,900 บาท</p>
+</section>
+
+<section id="savings">
+  <div class="section-head">
+    <span class="eyebrow">ส่วนที่ 7</span>
+    <h2>ถ้าต้องการลดงบ ควรเริ่มที่ไหน</h2>
+  </div>
+  <p>รายการด้านล่างเรียงตามมูลค่า ตัวเลขเป็นมูลค่าของงานกลุ่มนั้นในใบเสนอราคา ยังไม่ใช่ยอดที่จะประหยัดได้จริง เพราะขึ้นกับวัสดุทดแทนที่เลือก</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ทางเลือก</th><th class="num">มูลค่าที่เกี่ยวข้อง (บาท)</th></tr></thead>
+      <tbody>
+        <tr><td>ลดจำนวนจุดระแนงลายไม้และผนังไม้เทียม</td><td class="num">371,715</td></tr>
+        <tr><td>ลดพื้นที่กระเบื้องลายหินและผนังเท็กซ์เจอร์ หรือใช้สีทาธรรมดาในบางจุด</td><td class="num">308,808</td></tr>
+        <tr><td>เปลี่ยนวัสดุหรือลดขนาดหลังคากระจก DT.17 และ DT.14 เช่น ใช้หลังคาโปร่งแสงแบบเดียวกับ DT.11</td><td class="num">306,000</td></tr>
+        <tr><td>ทบทวนขนาดหน้าต่างบานใหญ่</td><td class="num">304,000 (ส่วนต่าง)</td></tr>
+        <tr><td>ประตูภายใน D6 และ D7 ใช้ความสูงมาตรฐานหรือวงกบไม้ชนิดอื่น</td><td class="num">252,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="font-size:.88rem">ผนังเบิ้ลและผนังบังหลังคา (520,090 บาท) มีผลต่อความร้อน เสียง และรูปทรงบ้าน จึงไม่ได้จัดเป็นทางเลือกแรกในการลดงบ</p>
+</section>
+
+<footer>
+  <span>ที่มา: ใบเสนอราคาครั้งที่ 3 บ้านคุณรินระวี (26 พ.ย. 2569, 44 หน้า) รวมแบบประกอบเสนอราคา Design 3.3 (19 พ.ย. 2569) · ภาพ 3 มิติจากเอกสารเสนองานออกแบบ 3.3 (6 พ.ย. 2569) · ภาพทั้งหมดเป็นของบริษัท WN-house</span>
+  <span>รายงานนี้จัดทำโดยใช้ AI ช่วยอ่านและสรุปเอกสาร ตัวเลขทุกยอดตรวจผลรวมกับต้นฉบับแล้ว แต่ไม่ใช่ความเห็นทางวิศวกรรม ควรยืนยันกับบริษัทก่อนตัดสินใจ</span>
+</footer>
+
+</div>
+
+<dialog id="zoom" aria-label="ภาพขยาย">
+  <button class="close" type="button" id="zoom-close">ปิด</button>
+  <img id="zoom-img" alt="">
+  <p id="zoom-cap"></p>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('zoom');
+  var img = document.getElementById('zoom-img');
+  var cap = document.getElementById('zoom-cap');
+  document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var src = btn.querySelector('img');
+      var fc = btn.parentElement.querySelector('figcaption');
+      img.src = src.src; img.alt = src.alt;
+      cap.textContent = fc ? fc.textContent : '';
+      if (dlg.showModal) dlg.showModal();
+    });
+  });
+  document.getElementById('zoom-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+})();
+</script>
+</body>
+</html>
